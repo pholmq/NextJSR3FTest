@@ -26,8 +26,8 @@ export default function Home() {
       <ambientLight intensity={0.1}/>
       <directionalLight position={[0,0,5]}/>
       <mesh >
-      <sphereGeometry/>
-      <meshStandardMaterial/>
+      <coneGeometry/>
+      <meshStandardMaterial color="blue" wireframe/>
     </mesh>
       {/* <AnimatedBox/> */}
     </Canvas>
