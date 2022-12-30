@@ -3,10 +3,12 @@
 // import { Inter } from '@next/font/google'
 // import styles from '../styles/Home.module.css'
 // const inter = Inter({ subsets: ['latin'] })
-
+import type { NextPage } from "next";
 import { Canvas } from "@react-three/fiber";
-import { describe } from "node:test";
-import AnimatedBox from "../components/AnimatedBox";
+// import { describe } from "node:test";
+// import AnimatedBox from "../components/AnimatedBox";
+import Lights from "../components/lights";
+import Ground from "../components/ground";
 import { OrbitControls, Stats, useTexture } from "@react-three/drei";
 
 
@@ -18,15 +20,15 @@ const TexturedSpheres = () => {
 
   return (
     <>
-    <mesh scale={[0.5, 0.5, 0.5]} position={[-1, 0, 0]}>
+    {/* <mesh scale={[0.5, 0.5, 0.5]} position={[-1, 1, 0]}>
       <sphereGeometry />
       <meshStandardMaterial map={map}/>
-    </mesh>
-    <mesh scale={[0.5, 0.5, 0.5]} position={[0, 0, 0]}>
-      <sphereGeometry />
+    </mesh> */}
+    <mesh scale={[0.5, 0.5, 0.5]} position={[0, 1, 0]} castShadow >
+      <sphereGeometry args={[1, 50, 50]}/>
       <meshStandardMaterial map={map} normalMap={normalMap} roughnessMap={roughnessMap}/>
     </mesh>
-    <mesh scale={[0.5, 0.5, 0.5]} position={[1, 0, 0]}>
+    {/* <mesh scale={[0.5, 0.5, 0.5]} position={[1, 1, 0]}>
       <sphereGeometry args={[1, 300, 300]} />
       <meshStandardMaterial 
       map={map} 
@@ -35,20 +37,20 @@ const TexturedSpheres = () => {
       displacementMap={displacementMap}
       displacementScale={0.1}
       />
-    </mesh>
+    </mesh> */}
 
 
     </>
   )
 }
 
-export default function Home() {
+const Home: NextPage = () => {
 
   const testing = true;
 
   return (
     <div className="container">
-    <Canvas>
+    <Canvas shadows>
       {testing ? <>
       <Stats/>
       <axesHelper args={[2]}/>
@@ -56,8 +58,8 @@ export default function Home() {
       </>
        : null }
       <OrbitControls/>
-      <ambientLight intensity={0.3}/>
-      <directionalLight position={[0,5,5]}/>
+      <Lights/>
+      <Ground/>
       <TexturedSpheres/>
       {/* <mesh >
       <coneGeometry/>
@@ -68,3 +70,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default Home;
