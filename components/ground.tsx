@@ -2,8 +2,8 @@ const Ground: React.FC = () => {
     return (
         <>
             <mesh rotation-x={Math.PI * -0.5} receiveShadow>
-                <planeBufferGeometry args={[1000, 1000]} />
-                <meshStandardMaterial color={"#458745"} />
+                <planeGeometry args={[10, 10]} />
+                <meshStandardMaterial color={"#555555"} />
             </mesh>
         </>
     );

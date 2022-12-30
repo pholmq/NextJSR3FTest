@@ -11,6 +11,18 @@ import Lights from "../components/lights";
 import Ground from "../components/ground";
 import { OrbitControls, Stats, useTexture } from "@react-three/drei";
 
+import { useLoader } from '@react-three/fiber'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+
+const Skull = () => {
+  const model = useLoader(GLTFLoader, "./models/skull_salazar_downloadable.glb")
+  model.scene.traverse((object) => {
+    if (object.isMesh) {
+      object.castShadow = true;
+    }
+  })
+  return <primitive object={model.scene} position={[0, 1, 0]}/>
+}
 
 const TexturedSpheres = () => {
   const map = useTexture("./textures/metal_plate_diff_1k.jpg");
@@ -58,9 +70,10 @@ const Home: NextPage = () => {
       </>
        : null }
       <OrbitControls/>
+      <Skull/>
       <Lights/>
       <Ground/>
-      <TexturedSpheres/>
+      {/* <TexturedSpheres/> */}
       {/* <mesh >
       <coneGeometry/>
       <meshStandardMaterial color="blue" wireframe/>

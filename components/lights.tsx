@@ -11,7 +11,7 @@ const Lights: React.FC = () => {
         <>
             <ambientLight intensity={0.3} />
             <directionalLight ref={lightRef} position={[0, 10, 10]} castShadow />
-            <hemisphereLight args={["#c257ff", "#fff23b", 10]} />
+            {/* <hemisphereLight args={["#c257ff", "#fff23b", 10]} /> */}
         </>
     );
 };
