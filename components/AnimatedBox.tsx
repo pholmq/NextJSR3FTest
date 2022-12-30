@@ -14,7 +14,7 @@ const AnimatedBox = () => {
   
     return (
       <mesh ref={meshRef}>
-      <boxGeometry/>
+      <sphereGeometry/>
       <meshStandardMaterial/>
     </mesh>
   
