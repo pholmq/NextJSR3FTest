@@ -17,7 +17,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 const Skull = () => {
   const model = useLoader(GLTFLoader, "./models/skull_salazar_downloadable.glb")
   model.scene.traverse((object) => {
-    if (object.isMesh) {
+    if (object.isObject3D) {
       object.castShadow = true;
     }
   })
